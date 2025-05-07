@@ -1,0 +1,22 @@
+name: "Les bornes électriques en banlieue parisenne"
+title: "Bornes de recharge dans la banlieu proche"
+output_dir: "docs"
+navbar:
+  title: "Inegalité d'accès aux bornes de recharge dans la banlieu proche"
+  left:
+    - text: "Présentation"
+      href: Intro.html
+    - text: "Nanterre"
+      href: Nanterre.html
+    - text: "Drancy"
+      href: Drancy.html
+    - text: "Choisy"
+      href: Choisy.html
+    - text: "Comparaison"
+      href: Comparaison.html
+    - text: "Conclusion"
+      href: Conclusion.html
+output:
+  html_document:
+    theme: flatly
+    highlight: textmate

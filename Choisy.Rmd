@@ -1,0 +1,58 @@
+---
+title: "Choisy"
+output: html_document
+---
+
+## Les bornes de recharge dans la ville de Choisy-Le-Roi
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(sf)
+library(dplyr)
+library(ggplot2)
+library(readr)
+
+# 1. Chargement des données
+cadastre_choisy <- st_read("cadastre-94022-communes.json")
+bornes <- read_csv("consolidation-etalab-schema-irve-statique-v-2.3.1-20250506.csv")
+  pop_choisy <- read_csv("populationchoisyleroi.csv")
+
+# 2. Conversion des bornes en spatial
+bornes_sf <- st_as_sf(bornes, coords = c("consolidated_longitude", "consolidated_latitude"), crs = 4326, remove = FALSE)
+
+# 3. Projection cohérente
+bornes_sf <- st_transform(bornes_sf, st_crs(cadastre_choisy))
+
+# 4. Filtrage : bornes dans Choisy
+bornes_choisy <- st_intersection(bornes_sf, cadastre_choisy)
+
+# 5. Calculs
+nb_bornes <- nrow(bornes_choisy)
+pop <- pop_choisy$population[1]
+superficie <- pop_choisy$superficie[1]
+densite_spatiale <- nb_bornes / superficie
+habitants_par_borne <- pop / nb_bornes
+
+# 6. Carte
+ggplot() +
+  geom_sf(data = cadastre_choisy, fill = "white", color = "black") +
+  geom_sf(data = bornes_choisy, color = "green", size = 2) +
+  labs(
+    title = "Bornes de recharge à Choisy-le-Roi",
+    subtitle = paste(nb_bornes, "bornes détectées"),
+    caption = "Source : Etalab / IRVE"
+  ) +
+  theme_minimal()
+
+# 7. Résumé console
+cat(paste0("À Choisy-le-Roi, ", nb_bornes, " bornes sont réparties sur ", superficie, " km².\n",
+           "Cela représente ", round(densite_spatiale, 2), " bornes par km².\n",
+           "Chaque borne couvre environ ", round(habitants_par_borne), " habitants."))
+
+
+```
+
+## Analyse des bornes de recharge à Choisy-le-Roi
+
+Choisy-le-Roi, située dans le Val-de-Marne au sud-est de Paris, compte 45 bornes de recharge pour véhicules électriques réparties sur une superficie de 5,5 km². Cela représente une densité d’environ 8,18 bornes par km². Chaque borne couvre en moyenne 1 022 habitants.
+
+Malgré sa taille plus réduite, Choisy-le-Roi affiche une densité de bornes relativement comparable à celle de Nanterre, ce qui témoigne d’un effort municipal pour équiper le territoire. Toutefois, le ratio habitants par borne reste élevé, ce qui pourrait limiter l’accessibilité à ces infrastructures si l’usage des véhicules électriques se généralise. Cela souligne l'importance d'adapter le maillage des bornes à la densité de population, pour garantir une transition écologique plus équitable.

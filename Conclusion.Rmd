@@ -1,0 +1,16 @@
+---
+title: "Conclusion"
+output: html_document
+---
+
+
+## Conclusion
+
+Ce travail a permis de mettre en évidence les disparités territoriales dans l'accès aux bornes de recharge pour véhicules électriques à travers l'étude de trois communes de la banlieue parisienne : Nanterre, Drancy et Choisy-le-Roi. Bien que toutes trois soient situées dans la proche périphérie de Paris, elles présentent des situations très contrastées, tant en termes de nombre de bornes disponibles que de densité par habitant ou par superficie.
+
+Il apparaît clairement que la transition écologique, et plus précisément la mobilité électrique, ne progresse pas de manière uniforme sur le territoire. Les communes les mieux dotées, comme Nanterre, bénéficient d’un cadre favorable et de moyens adaptés. À l’inverse, des villes comme Drancy rencontrent encore de réelles difficultés à offrir un accès équitable à ces infrastructures pourtant essentielles pour accompagner les transformations environnementales.
+
+Cette inégalité d’équipement pose un véritable enjeu d’équité sociale et territoriale : comment encourager tous les citoyens à adopter des comportements plus durables si les moyens d’y parvenir ne sont pas accessibles partout ? À cela s’ajoute le risque de renforcer les écarts déjà existants entre les territoires les plus favorisés et ceux qui peinent à suivre les ambitions nationales de neutralité carbone.
+
+Ainsi, cette étude locale illustre un défi beaucoup plus large : celui d’une transition écologique juste, qui n’oublie aucun territoire, aucune population, et qui repose sur une véritable coordination entre les politiques nationales, régionales et municipales. Car la réussite de cette transition ne dépend pas seulement des innovations technologiques, mais aussi de la capacité collective à en garantir l’accès équitable à tous.
+
